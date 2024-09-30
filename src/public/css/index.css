@@ -1,0 +1,89 @@
+.main {
+  margin: auto;
+  text-align: center;
+  
+}
+
+.form__group {
+  display: flex;
+  justify-content: space-between;  
+  margin: auto;
+  margin-bottom: 20px;
+  width: 60%; /* 幅を調整 */
+  height: auto; /* 高さを自動調整 */
+  
+}
+
+.form__label--required {
+  color: red;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form__group-content {
+  width: 70%;
+  text-align: left;
+}
+
+.form__group-title {
+  width: 30%; /* タイトル部分の幅を調整 */
+  text-align: left;
+  padding-left: 15px; /* 左のパディングを調整 */
+  padding-right: 10px; /* 右のパディングを調整 */
+}
+
+.form__button-submit {
+  color: aliceblue;
+  background-color: #827668;
+}
+
+/* 入力部分のスタイル */
+.form__input--text input,
+.create-form__item-select,
+.create-form__item-select option,
+.form__input--textarea textarea {
+  background-color: #F5F5F5;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  width: 100%; /* 幅を100%にして親要素に合わせる */
+  padding: 10px; /* パディングを追加 */
+}
+
+header {
+  border-bottom: 1px solid #f4f4f4;
+  width: 80%;
+  margin: auto;
+}
+
+.phone-input {
+  display: flex; /* 入力を横並びにする */
+  align-items: center; /* 中央揃え */
+}
+
+.phone-input input {
+  flex: 1; /* 各入力フィールドを均等に広げる */
+  margin: 0 5px; /* 隙間を調整 */
+  padding: 10px; /* パディングを追加 */
+  width: auto; /* 自動幅 */
+  
+}
+
+.form__group-content {
+  width: 100%; /* 幅を100%に設定 */
+  display: flex; /* フレックスボックスにする */
+  flex-direction: row; /* 行に配置 */
+  align-items: center; /* 中央揃え */
+}
+
+.form__group-title {
+  width: 30%; /* タイトルの幅を調整 */
+  text-align: left;
+  padding-left: 20px; /* 左の余白を追加 */
+}
+
+.form__label--item, .form__label--required {
+  margin-right: 5px; /* ラベル間の隙間を調整 */
+}
