@@ -1,0 +1,116 @@
+/* ベーススタイル */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5e7da;
+  position: relative;
+}
+
+header h2 {
+  font-size: 2rem;
+  color: #5a4632;
+  margin: 0;
+}
+
+nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+nav a {
+  color: #5a4632;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid #5a4632;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #5a4632;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #5a4632;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* フォームのスタイル */
+.form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.form__group {
+  margin-bottom: 20px;
+}
+
+.form__group-title {
+  margin-bottom: 5px;
+}
+
+.form__label--item {
+  font-size: 1rem;
+  color: #5a4632;
+}
+
+.form__input--text input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form__input--text input:focus {
+  border-color: #b79972;
+  outline: none;
+}
+
+.form__error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* ボタンのスタイル */
+.form__button {
+  text-align: center;
+}
+
+.form__button-submit {
+  background-color: #5a4632;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form__button-submit:hover {
+  background-color: #4a3727;
+}
