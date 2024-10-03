@@ -19,7 +19,7 @@
     <main>
         <h3>Login</h3>
 
-        <form class="form" action="/login" method="POST">
+    <form class="form" action="/login" method="POST">
     @csrf
 
     <div class="form__group">
