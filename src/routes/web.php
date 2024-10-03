@@ -29,11 +29,21 @@ Route::get('/edit', [ContactController::class, 'edit'])->name('contact.edit');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/thanks',[ContactController::class,'thanks']);
 
+
+
+
+// Route::get('/register', [AuthController::class, 'index']);
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+
 // Route::middleware('auth')->group(function () {
-    Route::post('/register',[AuthController::class,'register']);
+Route::post('/register',[AuthController::class,'register']);
 // });
 
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+
 Route::post('/login',[AuthController::class,'login']);
+
 
 // Route::get('/admin', function () {
 //     return view('admin'); 

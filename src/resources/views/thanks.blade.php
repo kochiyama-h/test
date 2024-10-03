@@ -15,6 +15,6 @@
   <h2>お問い合わせありがとうございました。</h2>
 
   <form action="/" method="get">    
-    <button type="button" name="">HOME</button>
+    <button type="submit" name="">HOME</button>
   </form>
 </main>
