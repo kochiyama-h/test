@@ -17,6 +17,27 @@ class ContactController extends Controller
                 return view('index', compact('categories')); // ビューにデータを渡す
         }
 
+        public function edit()
+        {
+
+                $contact = session('contact'); // セッションから入力値を取得
+                $categories = Category::all(); // 必要に応じてカテゴリデータを取得
+                return view('index', compact('contact', 'categories')); // 入力値をビューに渡す
+
+
+
+
+
+                // $contact = session('contact');
+                
+                // if (!$contact) {
+                //         // セッションにデータがない場合は、インデックスページにリダイレクト
+                //         return redirect()->route('contact.index');
+                // }
+
+                // return view('index', compact('contact')); // 修正画面に前回のデータを表示
+        }
+
         public function confirm(ContactRequest $request)
         {
                 $contact = $request->only(['first_name','last_name','gender', 'email', 'tel_1','tel_2','tel_3','address','building', 'content','detail','category_id']);

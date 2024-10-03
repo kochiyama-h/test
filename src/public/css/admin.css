@@ -1,15 +1,54 @@
 body {
   font-family: Arial, sans-serif;
+  width: 80%; /* 幅を80%に設定 */
+  margin: 0 auto; /* 中央揃え */
 }
 
 header {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   padding: 10px;
   text-align: center;
 }
 
-h1 {
+nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+nav a {
+  color: #5a4632;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid #5a4632;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #5a4632;
+  color: #fff;
+}
+
+main{
+  margin-bottom: 50px;
+}
+
+h2 {
   margin: 0;
+  font-size: 2rem;
+  color: #5a4632;
+}
+  
+
+h3{
+  font-size: 1.5rem;
+  color: #5a4632;
+  margin-bottom: 70px;
+  margin-top: 40px;
+  text-align: center;
+  
 }
 
 nav a {
@@ -33,20 +72,25 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
+  background-color: #8b7968; /* 見出し部分の背景色 */
+  color: #ffffff;
 }
 
-th {
-  background-color: #f2f2f2;
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  color: #8b7968; /* <td>の文字の色 */
 }
 
-.pagination {
+/* .pagination {
   margin-top: 20px;
   text-align: center;
-}
+} */
 
 .modal {
   display: none;
@@ -57,8 +101,8 @@ th {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -81,4 +125,102 @@ th {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal {
+  display: block; /* モーダルを表示 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* モーダルの幅 */
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center; /* 中央揃え */
+  list-style: none; /* リストスタイルをなしに */
+  padding: 0;
+  margin: 20px 0; /* 上下にマージンを追加 */
+}
+
+.pagination li {
+  margin: 0 5px; /* 各ページの間にマージンを追加 */
+}
+
+.pagination {
+  flex-direction: row; /* 行方向（デフォルト）に設定 */
+}
+
+.pagination a {
+  display: block; /* ブロック表示 */
+  padding: 8px 12px; /* 内側のパディングを設定 */
+  border-radius: 5px; /* 角を丸くする */
+  background-color: #f5f5f5; /* 背景色 */
+  color: #8b5b29; /* テキストカラー */
+  text-decoration: none; /* 下線をなしに */
+  transition: background-color 0.3s; /* ホバー時のトランジション */
+}
+
+.pagination a:hover {
+  background-color: #e0d6d0; /* ホバー時の背景色 */
+}
+
+.pagination .active a {
+  background-color: #c3b19c; /* アクティブなページの背景色 */
+  color: #fff; /* アクティブなページのテキストカラー */
+}
+
+.pagination .disabled a {
+  color: #ccc; /* 無効なページのテキストカラー */
+  cursor: not-allowed; /* カーソルを無効にする */
+}
+
+.pagination-arrow {
+  font-size: 14px; /* 数字と同じサイズに設定 */
+  padding: 8px;    /* 必要に応じてパディングを調整 */
+}  
+
+
+
+
+
+/* 検索ボタンの背景色 */
+#search {
+  background-color: #82766a; /* 変更 */
+  color: #ffffff; /* 文字の色 */
+}
+
+/* リセットボタンの背景色 */
+#reset {
+  background-color: #d9c5b5; /* 変更 */
+  color: #ffffff; /* 文字の色 */
+}
+
+/* 詳細ボタンの背景色 */
+table a {
+  background-color: #fdfdfd; /* 変更 */
+  color: #c4ac96; /* 文字の色 */
+  padding: 5px 10px; /* ボタンにパディングを追加 */
+  border-radius: 5px; /* ボタンを丸く */
+  text-decoration: none; /* 下線をなしに */
+  border: 2px solid #b09e8e;
+}
+
+table a:hover {
+  background-color: #8b7968; /* ホバー時の背景色 */
+  color: #ffffff; /* ホバー時の文字色 */
+  border: 2px solid #ffffff;
 }

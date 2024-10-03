@@ -30,4 +30,11 @@ class AuthController extends Controller
         $user = $request->only('email', 'password');
         return redirect('/admin');
     }
+
+    public function index()
+    {
+        // 7件ずつ表示
+        $users = User::paginate(7);
+        return view('auth.index', compact('users'));
+    }
 }

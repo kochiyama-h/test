@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f1ece7; /* bodyの背景色を変更 */
   margin: 0;
   padding: 0;
 }
@@ -8,7 +8,8 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  background-color: #f5e7da;
+  background-color: #ffffff; /* ヘッダーの背景色を白に変更 */
+  position: relative;
 }
 
 header h2 {
@@ -24,27 +25,39 @@ nav {
 }
 
 nav a {
-  color: #5a4632;
+  color: #5a4632; /* ボタンの文字色 */
   text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid #5a4632; /* ボタンのボーダー色 */
+  padding: 5px 10px;
+  border-radius: 5px; /* ボタンの角を丸く */
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #5a4632; /* ホバー時の背景色 */
+  color: #fff; /* ホバー時の文字色 */
 }
 
 main {
   display: flex;
+  flex-direction: column;  
   justify-content: center;
   align-items: center;
   height: 80vh;
+  width: 100%; /* 必要に応じて幅を設定 */
 }
 
 h3 {
   font-size: 1.5rem;
   color: #5a4632;
-  margin-bottom: 20px;
+  margin-bottom: 70px; 
   text-align: center;
 }
 
 /* フォームのスタイル */
 .form {
-  background-color: #fff;
+  background-color: #ffffff; /* フォームの背景色を白に変更 */
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -71,6 +84,7 @@ h3 {
   border-radius: 5px;
   font-size: 1rem;
   box-sizing: border-box;
+  background-color: #f4f4f4; /* 入力欄の背景色を変更 */
 }
 
 .form__input--text input:focus {

@@ -19,18 +19,16 @@
 
    <main>
    <div class="confirm__content">
-   <h3>Confirm</h3>
+   <h3>register</h3>
 
    <form class="form"  action="/thanks" method="post">
-    @csrf
-     
+    @csrf   
       
-
      <div class="confirm-table">
           <table class="confirm-table__inner">
             <tr class="confirm-table__row">
               <th class="confirm-table__header">お名前</th>
-              <td class="confirm-table__text">               
+              <td class="confirm-table__text name-row">               
                 <input type="text" name="first_name" value="{{ $contact['first_name'] }}"readonly/>
                 <input type="text" name="last_name" value="{{ $contact['last_name'] }}"readonly/>
               </td>
@@ -106,8 +104,9 @@
           </table>
         </div>
         <div class="form__button">
-          <button class="form__button-submit" type="submit">送信</button>
-        </div>  
+          <button class="button form__button-submit" type="submit">送信</button>
+          <a href="{{ route('contact.edit') }}" class="button form__button-edit">修正</a>
+        </div> 
 
    </form>
    </div>

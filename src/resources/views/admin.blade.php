@@ -8,98 +8,88 @@
     <title>Admin</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Fashionably Late</h1>
+        <h2>Fashionably Late</h2>
         <nav>
             <a href="{{ route('logout') }}">logout</a>
         </nav>
     </header>
 
     <main>
-        <h2>Admin</h2>
-
+    <h3>Admin</h3>
+    <form method="GET" action="{{ route('admin.index') }}">
         <div class="search-area">
-            <input type="text" id="name" placeholder="名前で検索">
-            <input type="email" id="email" placeholder="メールアドレスで検索">
-            <select id="gender">
+            <input type="text" name="name" placeholder="名前で検索" value="{{ request('name') }}">
+            <input type="email" name="email" placeholder="メールアドレスで検索" value="{{ request('email') }}">
+            <select name="gender">
                 <option value="">性別</option>
-                <option value="男性">男性</option>
-                <option value="女性">女性</option>
-                <option value="その他">その他</option>
-                <option value="全て">全て</option>
+                <option value="1" {{ request('gender') == '1' ? 'selected' : '' }}>男性</option>
+                <option value="2" {{ request('gender') == '2' ? 'selected' : '' }}>女性</option>
+                <option value="3" {{ request('gender') == '3' ? 'selected' : '' }}>その他</option>
+                <option value="全て" {{ request('gender') == '全て' ? 'selected' : '' }}>全て</option>
             </select>
-            <input type="text" id="inquiryType" placeholder="お問い合わせの種類で検索">
-            <input type="date" id="date">
-            <button id="search">検索</button>
-            <button id="reset">リセット</button>
+            <input type="text" name="inquiryType" placeholder="お問い合わせの種類で検索" value="{{ request('inquiryType') }}">
+            <input type="date" name="date" value="{{ request('date') }}">
+            <button type="submit" id="search">検索</button>           
+            <button type="submit" name="reset" id="reset">リセット</button>
         </div>
+    </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>お名前</th>
-                    <th>性別</th>
-                    <th>メールアドレス</th>
-                    <th>お問い合わせの種類</th>
-                    <th>詳細</th>
-                </tr>
-            </thead>
-            <tbody id="data-table">
-                <!-- データがここに入る -->
-            </tbody>
-        </table>
-
-        <div class="pagination">
-            <!-- ページネーション -->
-            {{ $data->links() }}
-        </div>
-    </main>
-
-    <!-- モーダルウィンドウ -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>詳細</h2>
-            <div id="modal-body"></div>
-            <button id="delete">削除</button>
-        </div>
+    <div class="pagination">
+        {{ $contacts->links() }}
     </div>
 
-    <script>
-        $(document).ready(function() {
-            // モーダルの表示
-            $(document).on('click', '.detail-button', function() {
-                const dataId = $(this).data('id');
-                // 詳細情報を取得する処理（Ajaxなどで）
-                $('#modal-body').html('詳細情報をここに表示します。');
-                $('#modal').show();
-            });
+    <table>
+        <thead>
+            <tr>
+                <th>お名前</th>
+                <th>性別</th>
+                <th>メールアドレス</th>
+                <th>お問い合わせの種類</th>
+                <th>詳細</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($contacts as $contact)
+            <tr>
+                <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                <td>
+                    @if ($contact->gender == 1)
+                        男性
+                    @elseif ($contact->gender == 2)
+                        女性
+                    @else
+                        その他
+                    @endif
+                </td>
+                <td>{{ $contact->email }}</td>
+                <td>{{ $contact->category ? $contact->category->content : '未選択' }}</td>
+                <td><a href="{{ route('admin.details', $contact->id) }}">詳細</a></td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-            // モーダルを閉じる
-            $('.close').click(function() {
-                $('#modal').hide();
-            });
+    @isset($selectedContact)
+        <div class="modal">
+            <div class="modal-content">
+                <h2>詳細情報</h2>
+                <p><strong>お名前:</strong> {{ $selectedContact->first_name }} {{ $selectedContact->last_name }}</p>
+                <p><strong>メールアドレス:</strong> {{ $selectedContact->email }}</p>
+                <p><strong>性別:</strong> {{ $selectedContact->gender == 1 ? '男性' : ($selectedContact->gender == 2 ? '女性' : 'その他') }}</p>
+                <p><strong>お問い合わせの種類:</strong> {{ $selectedContact->inquiry_type }}</p>
+                <p><strong>詳細:</strong> {{ $selectedContact->detail }}</p>
+                <a href="{{ route('admin.index') }}">閉じる</a>
+            </div>
+        </div>
+    @endisset
 
-            // リセットボタン
-            $('#reset').click(function() {
-                $('#name').val('');
-                $('#email').val('');
-                $('#gender').val('');
-                $('#inquiryType').val('');
-                $('#date').val('');
-            });
+</main>
+    
 
-            // 削除ボタン
-            $('#delete').click(function() {
-                // 削除処理をここに実装
-                $('#modal').hide();
-            });
-        });
-    </script>
 </body>
 
 </html>

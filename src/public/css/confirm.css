@@ -1,3 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+h2 {
+  text-align: center;
+  margin-top: 40px;
+}
+
+h3 {
+  text-align: center;
+}
+
 .confirm__content {
   margin: 0 auto;
   padding: 30px 15px;
@@ -26,8 +40,9 @@
   padding: 15px;
   width: 20%;
   border-bottom: 1px solid #ddd;
-  background-color: #eee;
+  background-color: #b9a99a; /* 背景色を変更 */
   font-weight: bold;
+  color: #fff;
 }
 
 .confirm-table__text {
@@ -36,9 +51,18 @@
 }
 
 .confirm-table__text input {
-  width: 100%;
+  width: 4cm; /* first_name の幅を 4cm に設定 */
   outline: none;
   border: none;
+}
+
+.name-row {
+  display: flex; /* フレックスボックスを使用 */
+  align-items: center; /* 中央揃え */
+}
+
+.name-input {
+  margin-right: -1px; /* 隙間を完全になくすためにマイナス余白を設定 */
 }
 
 .confirm-table__row:last-child .confirm-table__header,
@@ -51,13 +75,32 @@
   text-align: center;
 }
 
-.form__button-submit {
+.button {
   padding: 10px;
   width: 30%;
   height: 50px;
   border: none;
   border-radius: 3px;
-  background: #000;
+  background: #81766A; /* ボタンの基本色を変更 */
   color: #fff;
   cursor: pointer;
+  text-decoration: none; /* 下線を消す */
+  display: inline-block; /* ボタンとして表示 */
+  text-align: center; /* 中央揃え */
+  margin-left: 10px; /* ボタン間のスペース */
+  transition: background 0.3s; /* 背景色の変化をスムーズにする */
+}
+
+.button:hover {
+  background: #6a5d53; /* ホバー時の色を調整（暗くする） */
+}
+
+/* 送信ボタン */
+.form__button-submit {
+  background: #81766A; /* 送信ボタンの基本色を変更 */
+}
+
+/* 修正ボタン */
+.form__button-edit {
+  background: #81766A; /* 修正ボタンの基本色を変更 */
 }
