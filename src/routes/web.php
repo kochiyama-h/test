@@ -31,30 +31,34 @@ Route::post('/thanks',[ContactController::class,'thanks']);
 
 
 
-
-// Route::get('/register', [AuthController::class, 'index']);
-
-
 Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
-
-Route::middleware('auth')->group(function () {
-    Route::post('/register',[AuthController::class,'register']);
-});
-
-
+// ログインページ (Fortifyを使用)
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
+// 認証済みユーザーのみに管理画面へのアクセスを許可
 Route::middleware('auth')->group(function () {
-    Route::post('/login',[AuthController::class,'login']);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/details/{id}', [AdminController::class, 'show'])->name('admin.details');
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
 });
 
 
-// Route::get('/admin', function () {
-//     return view('admin'); 
+
+// Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+// Route::post('/register', [AuthController::class, 'register']);
+
+
+// Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+// Route::post('/login', [AuthController::class, 'login']);
+
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+//     Route::get('/admin/details/{id}', [AdminController::class, 'show'])->name('admin.details'); Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete'); 
 // });
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/details/{id}', [AdminController::class, 'show'])->name('admin.details');
-Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
+
 
