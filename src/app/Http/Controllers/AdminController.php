@@ -41,8 +41,8 @@ class AdminController extends Controller
     }
 
     // ページネーションを取得
-    $contacts = Contact::Paginate(7);
-    // $contacts = $query->paginate(7);    
+    // $contacts = Contact::Paginate(7);
+    $contacts = $query->paginate(7);    
     $selectedContact = null;
 
     return view('admin', compact('contacts', 'selectedContact'));
