@@ -56,4 +56,5 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/details/{id}', [AdminController::class, 'show'])->name('admin.details');
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
 

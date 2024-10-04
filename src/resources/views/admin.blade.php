@@ -37,52 +37,61 @@
             <button type="submit" name="reset" id="reset">リセット</button>
         </div>
     </form>
+    <div>
 
-    <div class="pagination">
-        {{ $contacts->links() }}
+
+        <div class="pagination">
+            {{ $contacts->links() }}
+        </div>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>お名前</th>
+                    <th>性別</th>
+                    <th>メールアドレス</th>
+                    <th>お問い合わせの種類</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($contacts as $contact)
+                <tr>
+                    <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                    <td>
+                        @if ($contact->gender == 1)
+                            男性
+                        @elseif ($contact->gender == 2)
+                            女性
+                        @else
+                            その他
+                        @endif
+                    </td>
+                    <td>{{ $contact->email }}</td>
+                    <td>{{ $contact->category ? $contact->category->content : '未選択' }}</td>
+                    <td><a href="{{ route('admin.details', $contact->id) }}">詳細</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>お名前</th>
-                <th>性別</th>
-                <th>メールアドレス</th>
-                <th>お問い合わせの種類</th>
-                <th>詳細</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($contacts as $contact)
-            <tr>
-                <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
-                <td>
-                    @if ($contact->gender == 1)
-                        男性
-                    @elseif ($contact->gender == 2)
-                        女性
-                    @else
-                        その他
-                    @endif
-                </td>
-                <td>{{ $contact->email }}</td>
-                <td>{{ $contact->category ? $contact->category->content : '未選択' }}</td>
-                <td><a href="{{ route('admin.details', $contact->id) }}">詳細</a></td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
 
     @isset($selectedContact)
         <div class="modal">
             <div class="modal-content">
+                <a href="{{ route('admin.index') }}" class="close-button">×</a>
                 <h2>詳細情報</h2>
                 <p><strong>お名前:</strong> {{ $selectedContact->first_name }} {{ $selectedContact->last_name }}</p>
                 <p><strong>メールアドレス:</strong> {{ $selectedContact->email }}</p>
-                <p><strong>性別:</strong> {{ $selectedContact->gender == 1 ? '男性' : ($selectedContact->gender == 2 ? '女性' : 'その他') }}</p>
-                <p><strong>お問い合わせの種類:</strong> {{ $selectedContact->inquiry_type }}</p>
+                <p><strong>性別:</strong> {{ $selectedContact->gender == 1 ? '男性' : ($selectedContact->gender == 2 ? '女性' : 'その他') }}</p>                
+                <p><strong>お問い合わせの種類:</strong> {{ $selectedContact->category ? $selectedContact->category->content : '未選択' }}</p>
                 <p><strong>詳細:</strong> {{ $selectedContact->detail }}</p>
-                <a href="{{ route('admin.index') }}">閉じる</a>
+                     <form method="POST" action="{{ route('admin.delete', $selectedContact->id) }}" onsubmit="return confirm('本当に削除しますか？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button">削除</button>
+                     </form>
+                
             </div>
         </div>
     @endisset
